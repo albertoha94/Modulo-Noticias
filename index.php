@@ -24,6 +24,7 @@
 
 	<!-- Dialogos -->
 	<?php
+			require 'conn.php';
 			require 'formas/add-app.php';
 			require 'formas/add-language.php';
 	?>

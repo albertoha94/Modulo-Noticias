@@ -24,7 +24,35 @@ $(document).ready(function () {
 	$('#form-add-language').hide();
 } );
 
-//-- Boton dentro de la forma: Agregar Idioma.
+//-- Evento de una pestaña presionada.
+$(document).ready(function() {
+    $('#tabs_main').tabs( {
+        select: function(event, ui) {
+            var tabNumber = ui.index;
+            var tabName = $(ui.tab).text();
+            
+            console.log('Tab number ' + tabNumber + ' - ' + tabName + ' - clicked');
+        }
+    } );
+} );
+
+/**
+ *	Carga todos los lenguajes disponibles y los muestra en una tabla.
+ */
+function loadLanguagesTable() {
+
+	//-- Call the process.
+	$.ajax( {
+		url: "ws/rows/get_rowlanguages.php",
+		success: function (oResult) {
+			//console.log(oResult);
+			//cerrarForma("form-add-language");
+			$("#div-languages").append(oResult);
+		}
+	} );
+}
+
+//-- Boton dentro de la forma: Agregar Idioma. --//
 /**
  *	Ejecuta un ajax que guarda el idioma en la base de datos.
  */
@@ -60,7 +88,7 @@ function saveLanguage(){
 	}
 }
 
-//-- Boton dentro de la forma: Agregar App.
+//-- Boton dentro de la forma: Agregar App. --//
 /**
  *	Ejecuta un ajax que guarda la app en la base de datos.
  */
@@ -99,9 +127,7 @@ function saveApp() {
 	}
 }
 
-	
-
-//-- Botones dentro de la forma: Formas en general.
+//-- Botones dentro de la forma: Formas en general. --//
 /**
  * Esconde la forma que se tiene
  */

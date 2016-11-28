@@ -51,7 +51,7 @@
 
 	<!-- Pestañas de al app -->
 	<div id="div-body">
-		<ul class="nav nav-tabs">
+		<ul class="nav nav-tabs" id="tabs_main">
 			<li class="active"><a href="#div-log" data-toggle="tab">Cambios</a></li>
 			<li><a href="#div-apps" data-toggle="tab">Aplicaciones</a></li>
 			<li><a href="#div-languages" data-toggle="tab">Idiomas</a></li>

@@ -2,91 +2,52 @@
  * Creada por Albertoha94 el 1/Nov/16.
  * Cambios:
  * 01/Nov/16.	-Agregados metodos:
- 				 *nuevaNoticia
- 				 *nuevaApp
- 				 *nuevaIdioma
-
+ 				 			 *nuevaNoticia
+ 				 	 		 *nuevaApp
+ 				 			 *newLanguage
  * 02/Nov/16.	-Actualizado nuevaApp para mostrar la forma.
- 				-Agregado metodo cerrarForma.
- 				-Agergada funcion document.ready para la app.
+ 							-Agregado metodo cerrarForma.
+ 							-Agergada funcion document.ready para la app.
  * 08/Nov/15.	-Agregado metodo saveLanguage.
- 				-Agregado metodo saveApp.
- 				-Actualizado metodo nuevaIdioma.
+ 							-Agregado metodo saveApp.
+ 							-Actualizado metodo newLanguage.
  * 11/Nov/16.	-Actualizado metodo nuevaApp para actualizarse acorde a los idiomas que se tengan.
+ * 05/Dic/16.	-Agregada una porcion de codigo en la seccion inicial para definir que hacer al presionar una pestaña.
+ 							-Movido metodo loadLanguagesTable.
+							-Movido metodo newLanguage.
+							-Movido metodo saveLanguage.
  */
 
-//-- Inicio de la app.
+/**
+ *	Codigo ejecutado al inicio de la app.
+ */
 $(document).ready(function () {
 	console.log("document ready Comenzado.");
 
 	//-- Escondemos los dialogos.
 	$('#form-add-app').hide();
 	$('#form-add-language').hide();
+
+	//-- Preparamos los clics the las tabs.
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+ 	 //-- Sacamos el atributo de la pestaña para saber cual es.
+ 	 var target = $(e.target).attr("href");
+	 console.log("Escrito en target: ", target);
+	 switch (target) {
+		 case "#div-apps":
+		 break;
+		 case "#div-log":
+		 break;
+		 case "#div-languages":
+		 loadLanguagesTable();
+		 break;
+		 default:
+		 alert("Error en pestañas.");
+		 break;
+	 }
+  });
 } );
-
-//-- Evento de una pestaña presionada.
-$(document).ready(function() {
-    $('#tabs_main').tabs( {
-        select: function(event, ui) {
-            var tabNumber = ui.index;
-            var tabName = $(ui.tab).text();
-            
-            console.log('Tab number ' + tabNumber + ' - ' + tabName + ' - clicked');
-        }
-    } );
-} );
-
-/**
- *	Carga todos los lenguajes disponibles y los muestra en una tabla.
- */
-function loadLanguagesTable() {
-
-	//-- Call the process.
-	$.ajax( {
-		url: "ws/rows/get_rowlanguages.php",
-		success: function (oResult) {
-			//console.log(oResult);
-			//cerrarForma("form-add-language");
-			$("#div-languages").append(oResult);
-		}
-	} );
-}
-
-//-- Boton dentro de la forma: Agregar Idioma. --//
-/**
- *	Ejecuta un ajax que guarda el idioma en la base de datos.
- */
-function saveLanguage(){
-
-  	//-- Agrega los valores.
-  	var lang = $("#app-lang-name").val();
-  	var abv = $("#app-lang-abv").val().toUpperCase();
-
-  	console.log("Valor de lang: ", lang);
-  	console.log("Valor de abv: ", abv);
-
-  	//-- Si alguno esta vacio, no guardes.
-  	if(lang == "" || abv == "") {
-  		console.log("Campos vacios.");
-  		$("#alert-error-addl").show();
-  	}
-  	else {
-  		console.log("Todo correcto, guardando.");
-
-		//-- Agregando el lenguaje.
-		$.ajax( {
-				url: "inserts/insert_language.php",
-				data: {
-					'language': lang,
-					'language_abv': abv
-				},
-				success: function (oResult) {
-					console.log(oResult);
-					cerrarForma("form-add-language");
-				}
-		} );
-	}
-}
 
 //-- Boton dentro de la forma: Agregar App. --//
 /**
@@ -137,16 +98,6 @@ function cerrarForma(oId) {
 }
 
 //-- Metodos para los botones de la parte superior.
-/**
- * Muestra la ventana de AgregarIdioma.
- */
-function nuevaIdioma() {
-	console.log("nuevoIdioma -----> Comenzado.");
-	$("#app-lang-name").val("");
-  	$("#app-lang-abv").val("");
-  	$("#alert-error-addl").hide();
-	$('#form-add-language').fadeIn(300);
-}
 
 /**
  * Muestra la ventana de nuevaNoticia.
@@ -160,7 +111,7 @@ function nuevaNoticia() {
  */
 function nuevaApp() {
 	console.log("nuevaApp -----> Comenzado.");
-	
+
 	//-- Limpiar la forma.
 	$("#app-name").val("");
 	$("#alert-error-addapp").hide();

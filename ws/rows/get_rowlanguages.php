@@ -4,13 +4,13 @@
  * Creado por Albertoha94 el 28/Nov/16.
  * Cambios:
  * 28/Nov/16:	-Creado llamada a conexión.
- 				-Creado query SELECT.
- 				-Creado un ciclo para dibujar lo obtenido del SELECT.
+ *							-Creado query SELECT.
+ *							-Creado un ciclo para dibujar lo obtenido del SELECT.
  */
-include '../conn.php';
+include '../../conn.php';
 
 //-- Select idioma.
-$sql = "SELECT `id_idioma`, `titulo`, `abreviacion`, `fecha_edicion` 
+$sql = "SELECT `id_idioma`, `titulo`, `abreviacion`, `fecha_edicion`
 		FROM `idioma`
 		WHERE activo = 1";
 $result = $conn->query($sql);
@@ -60,14 +60,18 @@ if ($result->num_rows > 0) {
 					</td>
 					<td>
 						<p style='text-align: center;'>
-							<button type='button' class='btn btn-primary' style='width: 100%;' onclick='editLanguage(
-							". $row["id_idioma"] .")'>Editar</button>
+							<button type='button' class='btn btn-primary' style='width: 100%;' data-toggle='modal'
+											data-target='#modal-dialog-language'
+											onclick='editLanguage(". $row["id_idioma"] .")'><b>Editar</b></button>
 						</p>
 					</td>
 					<td>
 						<p style='text-align: center;'>
-							<button type='button' class='btn btn-danger' style='width: 100%;' onclick='deleteLanguageLog(
-							". $row["id_idioma"] .")'>Eliminar</button>
+							<button type='button' class='btn btn-danger' style='width: 100%;' data-toggle='modal'
+											data-target='#modal-dialog-language-remove'
+											onclick=\"deleteLanguagePrompt(". $row["id_idioma"] .", '". $row["titulo"] ."', '". $row["abreviacion"] ."')\">
+											<b>Eliminar</b>
+							</button>
 						</p>
 					</td>
 				</tr>";
@@ -77,7 +81,7 @@ if ($result->num_rows > 0) {
 	//-- Cabecera de la tabla.
 	echo "  <thead>
 				<tr>
-					<th style='text-align: center; width: 100%;'/>	
+					<th style='text-align: center; width: 100%;'/>
 				</tr>
 			</thead>";
 

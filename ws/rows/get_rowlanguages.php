@@ -12,7 +12,8 @@ include '../../conn.php';
 //-- Select idioma.
 $sql = "SELECT `id_idioma`, `titulo`, `abreviacion`, `fecha_edicion`
 		FROM `idioma`
-		WHERE activo = 1";
+		WHERE activo = 1
+		ORDER BY fecha_creacion DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -70,7 +71,7 @@ if ($result->num_rows > 0) {
 							<button type='button' class='btn btn-danger' style='width: 100%;' data-toggle='modal'
 											data-target='#modal-dialog-language-remove'
 											onclick=\"deleteLanguagePrompt(". $row["id_idioma"] .", '". $row["titulo"] ."', '". $row["abreviacion"] ."')\">
-											<b>Eliminar</b>
+											<b>Desactivar</b>
 							</button>
 						</p>
 					</td>
@@ -88,7 +89,7 @@ if ($result->num_rows > 0) {
 	//-- Tabla vacia
     echo "<tr>
     		<td>
-    			Sin datos que obtener.
+    			Sin datos que mostrar.
     		</td>
     	  </tr>";
 }

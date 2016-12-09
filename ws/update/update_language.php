@@ -28,12 +28,12 @@ else {
     echo "Error: " . $sql_add . "<br>" . mysqli_error($conn);
 }
 
-//$sql_log = "INSERT INTO `log`(`mensaje`, `type`, `fecha_creacion`)
-//			VALUES ('Agregado lenguaje ". $_lang ."(". $_abv .").', 0, NOW())";
-//if (mysqli_query($conn, $sql_log)) {
-//    echo "Nuevo log lenguaje created successfully";
-//}
-//else {
-//    echo "Error: " . $sql_log . "<br>" . mysqli_error($conn);
-//}
+$sql_log = "INSERT INTO `log`(`mensaje`, `type`, `fecha_creacion`)
+			VALUES ('Se ha modificado el lenguaje ". $_lang ."(". $_abv .").', 1, NOW())";
+if (mysqli_query($conn, $sql_log)) {
+    echo "Nuevo log para una edicion de lenguaje creado";
+}
+else {
+    echo "Error: " . $sql_log . "<br>" . mysqli_error($conn);
+}
 ?>

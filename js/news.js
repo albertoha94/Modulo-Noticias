@@ -16,6 +16,8 @@
  							-Movido metodo loadLanguagesTable.
 							-Movido metodo newLanguage.
 							-Movido metodo saveLanguage.
+ * 08/Dic/16.	-Agregado metodo loadLogs.
+ 							-Actualizado codigo inicial para que cargue los logs al inicio y al hacer clic en el tab.
  */
 
 /**
@@ -23,6 +25,9 @@
  */
 $(document).ready(function () {
 	console.log("document ready Comenzado.");
+
+	//-- Mostramos los logs.
+	loadLogs();
 
 	//-- Escondemos los dialogos.
 	$('#form-add-app').hide();
@@ -38,9 +43,10 @@ $(document).ready(function () {
 		 case "#div-apps":
 		 break;
 		 case "#div-log":
+		 	loadLogs();
 		 break;
 		 case "#div-languages":
-		 loadLanguagesTable();
+		 	loadLanguagesTable();
 		 break;
 		 default:
 		 alert("Error en pestañas.");
@@ -48,6 +54,20 @@ $(document).ready(function () {
 	 }
   });
 } );
+
+/**
+ *	Loads all the logs in the app and adds them into a table.
+ */
+function loadLogs() {
+	//-- Llamar el proceso.
+	$.ajax( {
+		url: "ws/rows/get_rowlogs.php",
+		success: function (oResult) {
+			$("#log_table").empty();
+			$("#log_table").append(oResult);
+		}
+	} );
+}
 
 //-- Boton dentro de la forma: Agregar App. --//
 /**

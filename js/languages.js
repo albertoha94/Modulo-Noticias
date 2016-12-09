@@ -51,7 +51,7 @@
 
        //-- Agregando nuevo lenguaje.
        $.ajax( {
-         url: "inserts/insert_language.php",
+         url: "ws/inserts/insert_language.php",
          data: {
            'language': lang,
            'language_abv': abv
@@ -104,7 +104,7 @@
 
    //-- Llamar el proceso.
    $.ajax( {
-     url: "ws/edit/get_language.php",
+     url: "ws/get/get_language.php",
      data: {
        "LaguageId" : oId
      },
@@ -141,7 +141,7 @@
 
    //-- Eliminando lenguaje.
    $.ajax( {
-     url: "ws/update/delete_language.php",
+     url: "ws/delete/delete_language.php",
      data: {
        'language_id': currentid,
      },

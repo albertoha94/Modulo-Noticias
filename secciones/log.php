@@ -1,3 +1,4 @@
 <div id="div-log" class="div-section tab-pane fade in active">
-<p style="text-align: center; margin-top: 10px;"><b>27/10/16:</b> Le movieron a algo.</p>
+  <table style="width: 96%; margin: 20px; font-size: 16px" id="log_table" class="table table-striped">
+	</table>
 </div>

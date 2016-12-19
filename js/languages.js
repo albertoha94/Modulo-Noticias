@@ -1,12 +1,6 @@
 /**
  * Contiene todo lo relacionado con los lenguajes dentro de la app.
  * Creada por Albertoha94 el 05/Dic/16.
- * Cambios:
- * 05/Dic/16. -Agregado metodo loadLanguagesTable.
- *            -Agregado metodo newLanguage.
- *            -Agregado metodo editLanguage.
- *            -Agregado metodo deleteLanguage.
- *            -Agregado metodo saveLanguage.
  */
 
  /**

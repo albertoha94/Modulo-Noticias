@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="css/news.css">
 
 	<!-- JS del programa -->
+	<script type="text/javascript" src="js/apps.js"></script>
 	<script type="text/javascript" src="js/languages.js"></script>
 	<script type="text/javascript" src="js/news.js"></script>
 
@@ -28,8 +29,8 @@
 			require 'conn.php';
 
 			//Dialogos
-			require 'forms/add-app.php';
-			require 'forms/language.php';
+			require 'forms/app-add.php';
+			require 'forms/language-add.php';
 			require 'forms/language-remove.php';
 	?>
 
@@ -41,7 +42,8 @@
 					<button type="button" class="btn btn-manx" onclick="nuevaNoticia()">Nueva Noticia</button>
 				</td>
 				<td>
-					<button class="btn btn-manx" onclick="nuevaApp()">Nueva App</button>
+					<button type="button" class="btn btn-manx" data-toggle="modal"
+									data-target="#modal-dialog-add-app" onclick="newApp()">Nueva Aplicación</button>
 				</td>
 				<td>
 					<button type="button" class="btn btn-manx" data-toggle="modal"

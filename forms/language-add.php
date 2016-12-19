@@ -13,7 +13,7 @@
           <div class="alert alert-danger fade in" id="alert-error-addlanguage" style="text-align: center;">
       				<strong>ERROR</strong>
       				<br>
-      				Favor de completar los campos.
+      				Es necesario completar los campos para continuar.
     			</div>
 
           <!-- Forma -->

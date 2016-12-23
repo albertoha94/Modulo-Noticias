@@ -2,10 +2,6 @@
 /**
  * Obtiene un lenguaje por medio de su id y regresa su información.
  * Creado por Albertoha94 el 05/Dic/16.
- * Cambios:
- * 05/Dic/16:		-Creado script en base a get_rowlanguages.
- *							-Modificado el ciclo para que haga un array.
- *							-Modificado el echo para que regrese un JSON.
  */
 include '../../conn.php';
 

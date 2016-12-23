@@ -2,10 +2,6 @@
 /**
  * Obtiene todos los lenguajes activos dentro de la base de datos y los muestra en formato de tabla.
  * Creado por Albertoha94 el 08/Dic/16.
- * Cambios:
- * 08/Dic/16:		-Creado en base a get_rowlanguages.php.
- *							-Actualizado query de select.
- *							-Actualizados echos para que se ajusten al select.
  */
 include '../../conn.php';
 

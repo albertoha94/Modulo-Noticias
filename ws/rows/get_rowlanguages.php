@@ -2,10 +2,6 @@
 /**
  * Obtiene todos los lenguajes activos dentro de la base de datos y los muestra en formato de tabla.
  * Creado por Albertoha94 el 28/Nov/16.
- * Cambios:
- * 28/Nov/16:	-Creado llamada a conexión.
- *							-Creado query SELECT.
- *							-Creado un ciclo para dibujar lo obtenido del SELECT.
  */
 include '../../conn.php';
 

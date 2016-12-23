@@ -20,6 +20,7 @@ $(document).ready(function () {
 	 console.log("Escrito en target: ", target);
 	 switch (target) {
 		 case "#div-apps":
+		 	loadAppsList();
 		 break;
 		 case "#div-log":
 		 	loadLogs();

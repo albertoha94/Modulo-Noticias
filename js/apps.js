@@ -3,6 +3,15 @@
  * Creada por Albertoha94 el 19/Dic/16.
  */
 
+ /**
+  * Acciones al hacer clic en uno de los items de la lista.
+  * Actualiza la toda la div de apps con la seleccionada.
+  */
+  $(".list-group list-group-item").click(function(e) {
+   $(".list-group list-group-item").removeClass("active");
+   $(e.target).addClass("active");
+});
+
 /**
  *  Limpia la forma para agregar apps.
  */
@@ -71,5 +80,18 @@
  *  Muestra una ventana con todo lo referente a la app.
  */
  function showAppTab(oAppId) {
+ }
 
+ /**
+  * Carga todas las apps disponibles en una lista.
+  */
+ function loadAppsList() {
+   $.ajax( {
+     url: "ws/rows/get_rowapps.php",
+     success: function (oResult) {
+       console.log(oResult);
+       $("#apps-list").empty();
+       $("#apps-list").append(oResult);
+     }
+   } );
  }

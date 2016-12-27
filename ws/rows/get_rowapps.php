@@ -6,7 +6,7 @@
 include '../../conn.php';
 
 //-- Select apps.
-$sql = "SELECT `id_app`, `titulo` FROM `apps` WHERE `activo`= 1 ORDER BY titulo ASC";
+$sql = "SELECT `id_app`, `titulo`, `plataforma` FROM `apps` WHERE `activo`= 1 ORDER BY titulo ASC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -20,12 +20,21 @@ if ($result->num_rows > 0) {
 
 		if($result_count->num_rows > 0) {
 
-			//-- Escribir el renglon con contador.
 			$row_count = $result_count->fetch_assoc();
-			echo "<li class=\"list-group-item\">". $row["titulo"] ."<span class=\"badge badge-items\">". $row_count["conteo"] ."</span></li>";
-		} else {
-			//-- Escribir el renglon sin el contador.
-			echo "<li class=\"list-group-item\">". $row["titulo"] ."</li>";
+
+			//-- Si tiene noticias, poner el contador.
+			if($row_count < 0) {
+				echo "<button type='button' class='list-group-item list-group-item-action'
+											onclick='showApp(". $row["id_app"] .")'>
+								". $row["titulo"] ."
+								<span class=\"badge badge-items\">". $row_count["conteo"] ."</span>
+							</button>";
+			} else {
+				echo "<button type='button' class='list-group-item list-group-item-action'
+											onclick='showApp(". $row["id_app"] .")'>
+								". $row["titulo"] ."
+							</button>";
+			}
 		}
 	}
 } else {

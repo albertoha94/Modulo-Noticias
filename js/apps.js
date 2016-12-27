@@ -7,10 +7,18 @@
   * Acciones al hacer clic en uno de los items de la lista.
   * Actualiza la toda la div de apps con la seleccionada.
   */
-  $(".list-group list-group-item").click(function(e) {
-   $(".list-group list-group-item").removeClass("active");
-   $(e.target).addClass("active");
-});
+/*$(document).ready(function () {
+  console.log('ready listselect');
+
+  $(document).on('click', '.list-group', function(e){
+    alert("success");
+    /*var $this = $(this);
+    var $alias = $this.data('alias');
+
+    $('.active').removeClass('active');
+    $this.toggleClass('active')
+  });
+})*/
 
 /**
  *  Limpia la forma para agregar apps.
@@ -79,7 +87,19 @@
  /**
  *  Muestra una ventana con todo lo referente a la app.
  */
- function showAppTab(oAppId) {
+ function showApp(oAppId) {
+   console.log("App a mostrar: ", oAppId);
+   $.ajax( {
+     url: "ws/get/get_app.php",
+     data: {
+        'appId' : oAppId
+     },
+     success: function (oResult) {
+       console.log(oResult);
+       //$("#apps-list").empty();
+       //$("#apps-list").append(oResult)
+     }
+  });
  }
 
  /**
@@ -89,9 +109,9 @@
    $.ajax( {
      url: "ws/rows/get_rowapps.php",
      success: function (oResult) {
-       console.log(oResult);
+       //console.log(oResult);
        $("#apps-list").empty();
-       $("#apps-list").append(oResult);
+       $("#apps-list").append(oResult)
      }
-   } );
+   })
  }

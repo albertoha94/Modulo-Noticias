@@ -7,10 +7,10 @@
  *	Codigo ejecutado al inicio de la app.
  */
 $(document).ready(function () {
-	console.log("document ready Comenzado.");
+	//console.log("document ready Comenzado.");
 
-	//-- Mostramos los logs.
-	loadLogs();
+  //-- Mostramos los logs.
+  loadLogs()
 
 	//-- Preparamos los clics the las tabs.
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -20,20 +20,20 @@ $(document).ready(function () {
 	 console.log("Escrito en target: ", target);
 	 switch (target) {
 		 case "#div-apps":
-		 	loadAppsList();
-		 break;
+		 	loadAppsList()
+		 break
 		 case "#div-log":
-		 	loadLogs();
-		 break;
+		 	loadLogs()
+		 break
 		 case "#div-languages":
-		 	loadLanguagesTable();
-		 break;
+		 	loadLanguagesTable()
+		 break
 		 default:
 		 break;
 		 alert("Error en pestañas.");
 	 }
   });
-} );
+});
 
 /**
  *	Loads all the logs in the app and adds them into a table.
@@ -46,7 +46,7 @@ function loadLogs() {
 			$("#log_table").empty();
 			$("#log_table").append(oResult);
 		}
-	} );
+	} )
 }
 
 //-- Metodos para los botones de la parte superior.
@@ -54,5 +54,5 @@ function loadLogs() {
  * Muestra la ventana de nuevaNoticia.
  */
 function nuevaNoticia() {
-	console.log("nuevaNoticia -----> Comenzado.");
+  console.log('nuevaNoticia -----> Comenzado.')
 }

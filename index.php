@@ -59,7 +59,7 @@
 		<ul class="nav nav-tabs nav-justified" id="tabs_main">
 			<li class="active"><a href="#div-log" data-toggle="tab">Cambios</a></li>
 			<li><a href="#div-apps" data-toggle="tab">Aplicaciones</a></li>
-			<li><a href="#div-languages" data-toggle="tab">Idiomas</a></li>
+			<li><a href="#div-languages" data-toggle="tab">Tablas adicionales</a></li>
 		</ul>
 
 		<!-- Contenido de la pagina. -->

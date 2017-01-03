@@ -5,6 +5,7 @@
 	<title>Modulo noticias</title>
 
 	<!-- ########## Componentes usados ########## -->
+
 	<!-- Jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -41,39 +42,40 @@
 				<td>
 					<button type="button" class="btn btn-manx" onclick="nuevaNoticia()">Nueva Noticia</button>
 				</td>
-				<td>
-					<button type="button" class="btn btn-manx" data-toggle="modal"
-									data-target="#modal-dialog-add-app" onclick="newApp()">Nueva Aplicación</button>
-				</td>
-				<td>
-					<button type="button" class="btn btn-manx" data-toggle="modal"
-									data-target="#modal-dialog-language" onclick="newLanguage()">Nuevo Idioma</button>
-				</td>
 			</tr>
 		</table>
 
 	</div>
 
-	<!-- Pestañas de al app -->
-	<div id="div-body">
-		<ul class="nav nav-tabs nav-justified" id="tabs_main">
-			<li class="active"><a href="#div-log" data-toggle="tab">Cambios</a></li>
-			<li><a href="#div-apps" data-toggle="tab">Aplicaciones</a></li>
-			<li><a href="#div-languages" data-toggle="tab">Tablas adicionales</a></li>
-		</ul>
+	<div class="panel panel-default div-panel-height" style="height: 88%">
+	  <div class="panel-body div-panel-height height100">
+			<!-- Pestañas de al app -->
+			<div id="div-body" class="height100">
+				<ul class="nav nav-tabs nav-justified" id="tabs_main">
+					<li class="active"><a href="#div-lastnews" data-toggle="tab">Ultimas noticias</a></li>
+					<li><a href="#div-apps" data-toggle="tab">Aplicaciones</a></li>
+					<li><a href="#div-languages" data-toggle="tab">Tablas adicionales</a></li>
+					<li class="active"><a href="#div-log" data-toggle="tab">Cambios</a></li>
+				</ul>
 
-		<!-- Contenido de la pagina. -->
-		<div id="div-windows" class="tab-content">
+				<!-- Contenido de la pagina. -->
+				<div id="div-windows" class="tab-content">
 
-			<?php
-			require 'secciones/log.php';
-			require 'secciones/languages.php';
-			require 'secciones/apps.php';
-			?>
+					<?php
+					require 'secciones/latest_news.php';
+					require 'secciones/log.php';
+					require 'secciones/languages.php';
+					require 'secciones/apps.php';
+					?>
 
+				</div>
+
+			</div>
+			<div>
+			</div>
 		</div>
-
 	</div>
+	<h4 style="text-align: center">Hecho por fulano</h5>
 
 </body>
 

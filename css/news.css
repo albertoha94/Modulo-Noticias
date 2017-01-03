@@ -1,4 +1,118 @@
+/*-- Campos usados en la pestaña adicional -----------------------------------*/
+.additional-tablehead {
+	display: block;
+	width: 800px;
+}
 
+.additional-fulltable {
+	width: 98%;
+	margin: 20px;
+	font-size: 16px;
+	height: 375px;
+	margin-top: 20px;
+}
+
+/*-- Para el boton de busqueda --*/
+#language-search-button {
+	width: 45px;
+	margin-bottom: 1px;
+}
+
+#dummy-txt {
+	padding-right: 5px;
+	display: inline;
+}
+
+/*-- Para que el parrafo en el footer se mantenga en la misma linea --*/
+#language-lastedit {
+	display: inline;
+}
+
+/*-- Para el padding de los objetos ------------------------------------------*/
+.nopadding {
+	padding: 0;
+}
+
+.padding10 {
+	padding: 10px;
+}
+
+/*-- Que ocupe todo el alto --------------------------------------------------*/
+.height100 {
+	height: 100%;
+}
+
+.height45px {
+	height: 45px;
+}
+
+/*-- Para quitar los radios de los objetos -----------------------------------*/
+.noradius-right {
+	border-radius: 5px 0 0 5px;
+}
+
+.noradius-left {
+	border-radius: 0 5px 5px 0;
+}
+
+.noradius {
+	border-radius: 0;
+}
+
+/*-- Para el ancho de los objetos --------------------------------------------*/
+.width100 {
+	width: 100%;
+}
+
+.width25 {
+	width: 25%;
+}
+
+.width30 {
+	width: 30%;
+}
+
+.width10 {
+	width: 10%;
+}
+
+.width40 {
+	width: 40%;
+}
+
+.width50 {
+	width: : 50%;
+}
+
+/*-- Margenes en los objetos -------------------------------------------------*/
+.btn-marginright {
+	margin-right: 5px;
+}
+
+.btn-marginbottom {
+	margin-bottom: 5px;
+}
+
+/*-- Botones manx ------------------------------------------------------------*/
+.btn-manx-nomargin {
+	background: #1fad8e;
+	color: white;
+	height: 45px;
+	font-size: 16px;
+}
+
+.btn-manx {
+	background: #1fad8e;
+	margin: 5px;
+	padding: 10px;
+	color: white;
+	font-size: 16px;
+}
+
+/*-- Alto del panel con las pestañas. --*/
+.div-panel-height {
+	height: inherit;
+}
 
 /*-- Para la forma de agregar/editar preguntas. --*/
 .form-back {
@@ -50,22 +164,14 @@ p {
 	height: 100%;
 }
 
-#div-body{
+#y{
 	width: 100%;
-	height: 100%;
+	height: 95%;
 }
 
 .body-news {
 	padding: 25px;
 	height: 100%;
-}
-
-.btn-manx {
-	background: #1fad8e;
-	margin: 5px;
-	padding: 10px;
-	color: white;
-	font-size: 16px;
 }
 
 .btn-manx:active {

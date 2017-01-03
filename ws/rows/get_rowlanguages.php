@@ -14,23 +14,6 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 
-	//-- Cabecera de la tabla.
-	echo "  <thead>
-				<tr>
-					<th style='text-align: center; width: 200px;'>
-						Idioma
-					</th>
-					<th style='text-align: center; width: 200px;'>
-						Abreviación
-					</th>
-					<th style='text-align: center; width: 200px;'>
-						Última edición
-					</th>
-					<th style='width: 100px'/>
-					<th style='width: 100px'/>
-				</tr>
-			</thead>";
-
     //-- Datos de cada renglon.
     while($row = $result->fetch_assoc()) {
 
@@ -39,54 +22,31 @@ if ($result->num_rows > 0) {
     	if(!is_null($row["fecha_edicion"]))
     		$ult_edit = $row["fecha_edicion"];
 
-     	echo "	<tr>
-					<td>
-						<p style='text-align: center;'>
+     	echo "
+				<tr>
+					<td style=\"width: 200px;\">
+						<p>
 							". $row["titulo"] ."
 						</p>
 					</td>
-					<td>
-						<p style='text-align: center;'>
+					<td style=\"width: 200px;\">
+						<p>
 							". $row["abreviacion"] ."
 						</p>
 					</td>
-					<td>
-						<p style='text-align: center;'>
-							". $ult_edit ."
-						</p>
-					</td>
-					<td>
-						<p style='text-align: center;'>
+					<td style=\"width: 200px;\">
 							<button type='button' class='btn btn-primary' style='width: 100%;' data-toggle='modal'
 											data-target='#modal-dialog-language'
 											onclick='editLanguage(". $row["id_idioma"] .")'><b>Editar</b></button>
-						</p>
 					</td>
-					<td>
-						<p style='text-align: center;'>
+					<td style=\"width: 200px;\">
 							<button type='button' class='btn btn-danger' style='width: 100%;' data-toggle='modal'
 											data-target='#modal-dialog-language-remove'
 											onclick=\"deleteLanguagePrompt(". $row["id_idioma"] .", '". $row["titulo"] ."', '". $row["abreviacion"] ."')\">
 											<b>Desactivar</b>
 							</button>
-						</p>
 					</td>
 				</tr>";
     }
-} else {
-
-	//-- Cabecera de la tabla.
-	echo "  <thead>
-				<tr>
-					<th style='text-align: center; width: 100%;'/>
-				</tr>
-			</thead>";
-
-	//-- Tabla vacia
-    echo "<tr>
-    		<td>
-    			Sin datos que mostrar.
-    		</td>
-    	  </tr>";
 }
 ?>

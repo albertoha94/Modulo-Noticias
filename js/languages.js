@@ -84,8 +84,8 @@
    $.ajax( {
      url: "ws/rows/get_rowlanguages.php",
      success: function (oResult) {
-       $("#languages_table").empty();
-       $("#languages_table").append(oResult);
+       $("#languages_table_tbody").empty();
+       $("#languages_table_tbody").append(oResult);
      }
    } );
  }

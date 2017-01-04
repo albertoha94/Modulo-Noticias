@@ -43,8 +43,55 @@ function loadLogs() {
 	$.ajax( {
 		url: "ws/rows/get_rowlogs.php",
 		success: function (oResult) {
-			$("#log_table").empty();
-			$("#log_table").append(oResult);
+         //-- Limpia la tabla.
+         $("#log_table").empty();
+         var row = "";
+
+         if(oResult == null){
+            console.log("res_array es null");
+            row = "<thead>\
+                   </thead>\
+                   <tbody>\
+                    <tr>\
+                      <tc>\
+                        Sin datos que mostrar\
+                      </tc>\
+                    </tr>\
+                   </tbody>";
+         } else {
+
+         }
+      var res_array = JSON.parse(oResult);
+
+
+        console.log("res_array noes null");
+        /*row = "\
+         <tr style=\"display: block;\">\
+           <td class=\"additional-headtable-cell-2\">\
+             <p>\
+               " + oValue["titulo"] + "\
+             </p>\
+           </td>\
+           <td class=\"additional-headtable-cell-2\">\
+             <p>\
+               " + oValue["abreviacion"] + "\
+             </p>\
+           </td>\
+           <td class=\"additional-headtable-cell\">\
+               <button type='button' class='btn btn-primary' style='width: 100%;' data-toggle='modal'\
+                       data-target='#modal-dialog-language'\
+                       onclick='editLanguage(" + oValue["id_idioma"] + ")' " + dehab + "><b>Editar</b></button>\
+           </td>\
+           <td class=\"additional-headtable-cell\">\
+               <button type='button' class='btn btn-danger' style='width: 100%;' data-toggle='modal'\
+                       data-target='#modal-dialog-language-remove'\
+                       onclick=\"deleteLanguagePrompt(" + oValue["id_idioma"] + ", '" + oValue["titulo"] + "', '" + oValue["abreviacion"] + "')\" " + dehab + ">\
+                       <b>Desactivar</b>\
+               </button>\
+           </td>\
+         </tr>";*/
+      }
+			$("#log_table").append(row);
 		}
 	} )
 }

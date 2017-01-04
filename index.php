@@ -75,7 +75,9 @@
 			</div>
 		</div>
 	</div>
-	<h4 style="text-align: center">Hecho por fulano</h5>
+	<div>
+		<h4 style="text-align: center">Hecho por fulano</h5>
+	</div>
 
 </body>
 

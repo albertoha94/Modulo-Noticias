@@ -28,16 +28,16 @@
    var lang = $("#app-lang-name").val();
    var abv = $("#app-lang-abv").val().toUpperCase();
 
-   console.log("Valor de lang: ", lang);
-   console.log("Valor de abv: ", abv);
+   //console.log("Valor de lang: ", lang);
+   //console.log("Valor de abv: ", abv);
 
    //-- Si alguno esta vacio, no guardes.
    if(lang == "" || abv == "") {
-     console.log("Campos vacios.");
+     //console.log("Campos vacios.");
      $("#alert-error-addlanguage").show();
    }
    else {
-     console.log("Todo correcto, guardando.");
+     //console.log("Todo correcto, guardando.");
 
      //-- Obteniendo id.
      var currentid = $("#app-lang-id").val();
@@ -52,6 +52,7 @@
          },
          success: function (oResult) {
            console.log(oResult);
+           loadLanguagesTable();
            $('#modal-dialog-language').modal('toggle');
          }
        } );
@@ -85,10 +86,80 @@
      url: "ws/rows/get_rowlanguages.php",
      success: function (oResult) {
        $("#languages_table_tbody").empty();
-       $("#languages_table_tbody").append(oResult);
+       var myhtml = [];
+       var info = JSON.parse(oResult);
+       //console.log(info);
+
+       //-- Ciclo para crear la tabla.
+       $.each(info, function (oIndex, oValue) {
+
+          //-- Si se deben deshabilitan botones.
+          var dehab = "";
+          if(oValue["manejable"] == 0) {
+             dehab = "disabled";
+             //console.log("Bloqueado en index ", oIndex);
+          }
+
+          //-- Crea un renglon.
+          var row = "\
+ 				<tr style=\"display: block;\">\
+ 					<td class=\"additional-headtable-cell-2\">\
+ 						<p>\
+ 							" + oValue["titulo"] + "\
+ 						</p>\
+ 					</td>\
+ 					<td class=\"additional-headtable-cell-2\">\
+ 						<p>\
+ 							" + oValue["abreviacion"] + "\
+ 						</p>\
+ 					</td>\
+ 					<td class=\"additional-headtable-cell\">\
+ 							<button type='button' class='btn btn-primary' style='width: 100%;' data-toggle='modal'\
+ 											data-target='#modal-dialog-language'\
+ 											onclick='editLanguage(" + oValue["id_idioma"] + ")' " + dehab + "><b>Editar</b></button>\
+ 					</td>\
+ 					<td class=\"additional-headtable-cell\">\
+ 							<button type='button' class='btn btn-danger' style='width: 100%;' data-toggle='modal'\
+ 											data-target='#modal-dialog-language-remove'\
+ 											onclick=\"deleteLanguagePrompt(" + oValue["id_idioma"] + ", '" + oValue["titulo"] + "', '" + oValue["abreviacion"] + "')\" " + dehab + ">\
+ 											<b>Desactivar</b>\
+ 							</button>\
+ 					</td>\
+ 				</tr>";
+          if(oValue["manejable"] == 0) {
+             //console.log("Haciendo unshift");
+             myhtml.unshift(row);
+          } else {
+             //console.log("Haciendo push");
+             myhtml.push(row);
+          }
+          /*console.log("Index actual", oIndex);
+          console.log(oValue["id_idioma"]);
+          console.log(oValue["titulo"]);
+          console.log(oValue["abreviacion"]);
+          console.log(oValue["manejable"]);*/
+
+       } );
+       //console.log(myhtml);
+       $("#languages_table_tbody").append(myhtml);
+       checkLastEdit();
      }
    } );
  }
+
+/**
+ * Obtiene la fecha mas reciente de fecha_edicion en idiomas.
+ */
+ function checkLastEdit() {
+    $.ajax( {
+     url: "ws/get_lastedit/get_le_languages.php",
+     success: function (oResult) {
+        //console.log("Ultima edicion: ", oResult);
+        $("#language-lastedit").text("");
+        $("#language-lastedit").text(oResult);
+     }
+    } );
+}
 
  /**
  * Llama a la forma para editar un lenguaje.
@@ -132,6 +203,9 @@
  */
  function deleteLanguage(oId) {
    var currentid = $("#app-lang-remove-id").val();
+
+   // TODO: FALTA HACER QUE LAS NOTICIAS CON ESTE LENGUAJE DENTRO DE CADA APP SEA DADA DE BAJA.
+   // TODO: SI EL LENGUAJE ES DEFAULT DE ALGUNA APP, CAMBIAR LA APP A INGLES COMO DEFAULT.
 
    //-- Eliminando lenguaje.
    $.ajax( {

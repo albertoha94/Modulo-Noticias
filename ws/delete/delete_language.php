@@ -1,11 +1,7 @@
 <?php
 /**
+ * Service usado para dar de baja un lenguaje, crea un log conforme a este.
  * Creado por Albertoha94 el 05/Dic/16.
- * Cambios:
- * 05/Dic/16:	-Script creado en base a update_language.
- *						-Actualizado query para hacer una funcion diferente.
- *						-Actualizado mensajes de respuesta.
- * 07/Dic/16:	-Descomentado y actualizado segmento de codigo para logs.
  */
 include '../../conn.php';
 
@@ -15,9 +11,9 @@ $_id = $_GET['language_id'];
 //-- Insert language.
 $sql_add = "UPDATE `idioma`
 						SET `fecha_baja`= NOW(),
+								`ultimo_cambio` = NOW(),
 								`activo`= 0
-						WHERE activo = 1
-						AND id_idioma = ". $_id;
+						WHERE id_idioma = ". $_id;
 
 if (mysqli_query($conn, $sql_add)) {
     echo "Lenguaje eliminado.";
@@ -44,10 +40,10 @@ if ($result_select->num_rows > 0) {
     }
 }
 
-$sql_log = "INSERT INTO `log`(`mensaje`, `type`, `fecha_creacion`)
-			VALUES ('Se ha desactivado el lenguaje ". $resf["titulo"] ."(". $resf["abreviacion"] .").', 2, NOW())";
+$sql_log = "INSERT INTO `log`(`mensaje`, `type`)
+			VALUES ('Desactivación del lenguaje ". $resf["titulo"] ."(". $resf["abreviacion"] .").', 2)";
 if (mysqli_query($conn, $sql_log)) {
-    echo "Nuevo log creado por desactivar un lenguaje.";
+    echo "Log de lenguaje desactivado creado.";
 }
 else {
     echo "Error: " . $sql_log . "<br>" . mysqli_error($conn);

@@ -1,119 +1,121 @@
 <div id="div-languages" class="div-section tab-pane fade">
-	<table class="additional-fulltable">
-		<tr>
-		  <td style="width: 600px; margin-right: 20px;">
+	<div class="row additional-fulltable">
 
-				<!-- Renglon de busqueda -->
-				<table class="btn-marginbottom" style="width:450px;">
-					<tr>
-						<td style="height: 45px; width: 100px;">
-							<button type="button" class="btn btn-manx-nomargin" data-toggle="modal"
-							data-target="#modal-dialog-platform" onclick="newPlatform()">Nueva Plataforma</button>
-						</td>
-						<td style="width: 200px;">
-							<input type="text" id="platform-search-text" class="form-control noradius-right height45px"
-							style="margin-left: 10px;" maxlength="30"/>
-						</td>
-						<td>
-							<button type="button" style="width: 45px; height: 45px;"
-							class="btn nopadding btn-manx-nomargin noradius-left"
-							id="platform-search-button">
-								<img src="res/imgs/search.png" width="25px" height="25px" />
-							</button>
-						</td>
-					</tr>
-				</table>
+		<!-- Plataformas -->
+		<div class="col-lg-6" style="height: 100%;">
 
-				<!-- Tabla -->
-				<div class="panel panel-default" style="height: 425px; width: 400px;">
-					<div class="panel panel-heading" style="margin-bottom: 0;">
-						Plataformas
-					</div>
-					<div class="panel-body nopadding" style="height: 335px;">
-						<table  id="languages_table" class="table table-striped"
-						style="height: 235px;">
-						<thead class="additional-tablehead">
-							<tr>
-								<th style='width: 200px;'>
-									Plataforma
-								</th>
-								<th style='width: 200px;'/>
-								<th style='width: 200px'/>
-								<th style='width: 200px'/>
-							</tr>
-						</thead>
-							<tbody id="platforms_table_tbody"
-							style="overflow-y: scroll; overflow-x: hidden; max-height: 295px; display: block; width:800px;">
-							</tbody>
-						</table>
-					</div>
+			<!-- Renglon de busqueda -->
+			<div class="row" style="margin-bottom: 5px;">
+				<div class="col-md-4">
+					<button type="button" class="btn btn-manx-nomargin" data-toggle="modal"
+					data-target="#modal-dialog-platform" onclick="newPlatform()" style="width: 100%;">
+						Nueva Plataforma
+					</button>
+				</div>
+				<div class="col-md-8">
+					<input type="text" id="platform-search-text" maxlength="30"
+					class="form-control additional-searchInputs"/>
+				</div>
+			</div>
+			<!-- Fin de renglon de busqueda -->
 
-					<div class="panel-footer">
-						<p id="dummy-txt">Ultima modificación:</p><p id="platform-lastedit">-</p>
+			<!-- Renglon con la tabla -->
+			<div class="row" style="height: 410px;">
+				<div class="col-md-12" style="height: inherit;">
+					<div class="panel panel-default" style="height: inherit;">
+						<div class="panel panel-heading" style="margin-bottom: 0;">
+							Plataformas
+						</div>
+						<div class="panel-body additional-panel-body">
+							<table  id="languages_table" class="table table-striped additional-tables">
+								<thead class="additional-headtable">
+									<tr style="display: block;">
+										<th class="additional-headtable-cell-2">
+											Nombre
+										</th>
+										<th class="additional-headtable-cell"/>
+										<th class="additional-headtable-cell"/>
+										<th class="additional-headtable-cell"/>
+									</tr>
+								</thead>
+								<tbody id="platforms_table_tbody" class="additional-tablebody">
+								</tbody>
+							</table>
+						</div>
+						<div class="panel-footer">
+							<p id="dummy-txt">Ultima modificación:</p><p id="platform-lastedit">-</p>
+						</div>
 					</div>
 				</div>
-				<table  id="platform_table" class="table table-striped">
-				</table>
-			</td>
-			<td style="max-width: 600px;">
+			</div>
+			<!-- Fin de renglon con la tabla -->
 
-				<!-- Renglon de busqueda -->
-				<table class="width100 btn-marginbottom">
-					<tr class="width100">
-						<td class="width30 height100">
-							<button type="button" class="btn btn-manx-nomargin" data-toggle="modal"
-							data-target="#modal-dialog-language" onclick="newLanguage()">Nuevo Lenguaje</button>
-						</td>
-						<td class="width40 height100">
-							<input type="text" id="language-search-text" class="form-control noradius-right height45px"
-							maxlength="30"/>
-						</td>
-						<td class="width25 height100">
-							<select class="form-control fill-space noradius height45px" id="language-search-type">
-								<option value="0">Lenguaje</option>
-								<option value="1">Abreviación</option>
-							</select>
-						</td>
-						<td class="height100">
-							<button type="button" class="btn nopadding btn-manx-nomargin noradius-left height45px"
-							id="language-search-button">
-								<img src="res/imgs/search.png" width="25px" height="25px" />
-							</button>
-						</td>
-					</tr>
-				</table>
+		</div>
+		<!-- Fin de plataformas -->
 
-				<!-- Tabla -->
-				<div class="panel panel-default" style="height: 425px; width: 450px;">
-					<div class="panel panel-heading" style="margin-bottom: 0;">
-						Lenguajes
-					</div>
-					<div class="panel-body nopadding" style="height: 335px;">
-						<table  id="languages_table" class="table table-striped"
-						style="height: 235px;">
-						<thead class="additional-tablehead">
-							<tr>
-								<th style='width: 200px;'>
+		<!-- Lenguajes -->
+		<div class="col-lg-6" style="height: 100%;">
+
+			<!-- Busqueda -->
+			<div class="row" style="margin-bottom: 5px;">
+				<div class="col-md-4">
+					<button type="button" class="btn btn-manx-nomargin" data-toggle="modal"
+					style="width: 100%;" data-target="#modal-dialog-language"
+					onclick="newLanguage()">Nuevo Lenguaje</button>
+				</div>
+				<div class="col-md-4" style="padding-right: 0;">
+					<input type="text" id="language-search-text" maxlength="30"
+					style="border-radius: 5px 0 0 5px;"
+					class="form-control noradius-right additional-searchInputs"/>
+				</div>
+				<div class="col-md-3" style="padding: 0;">
+					<select class="form-control fill-space noradius additional-searchInputs"
+					style="border-radius: 0;" id="language-search-type">
+						<option value="0">Lenguaje</option>
+						<option value="1">Abreviación</option>
+					</select>
+				</div>
+				<div class="col-md-1" style="padding: 0;">
+					<button type="button" id="language-search-button" style="border-radius: 0 5px 5px 0;"
+					class="btn nopadding btn-manx-nomargin additional-searchInputs">
+						<img src="res/imgs/search.png" width="25px" height="25px" />
+					</button>
+				</div>
+			</div>
+			<!-- Fin de Busqueda -->
+
+			<!-- Tabla-->
+			<div class="panel panel-default">
+				<div class="panel panel-heading" style="margin-bottom: 0;">
+					Lenguajes
+				</div>
+
+				<div class="panel-body additional-panel-body">
+					<table  id="languages_table" class="table table-striped additional-tables">
+						<thead class="additional-headtable">
+							<tr style="display: block;">
+								<th class="additional-headtable-cell-2">
 									Idioma
 								</th>
-								<th style='width: 200px;'>
+								<th class="additional-headtable-cell-2">
 									Abreviación
 								</th>
-									<th style='width: 200px'/>
-									<th style='width: 200px'/>
-								</tr>
-							</thead>
-							<tbody id="languages_table_tbody"
-							style="overflow-y: scroll; overflow-x: hidden; max-height: 295px; display: block; width:800px;">
-							</tbody>
-						</table>
-					</div>
-
-					<div class="panel-footer">
-						<p id="dummy-txt">Ultima modificación:</p><p id="language-lastedit">-</p>
-					</div>
+								<th class="additional-headtable-cell"/>
+								<th class="additional-headtable-cell"/>
+							</tr>
+						</thead>
+						<tbody id="languages_table_tbody" class="additional-tablebody">
+						</tbody>
+					</table>
 				</div>
-			</td>
-		</tr>
-	</table>
+
+				<div class="panel-footer">
+					<p id="dummy-txt">Ultima modificación:</p><p id="language-lastedit">-</p>
+				</div>
+			</div>
+			<!-- Fin de tabla -->
+		</div>
+		<!-- Fin de Lenguajes -->
+
+	</div>
 </div>

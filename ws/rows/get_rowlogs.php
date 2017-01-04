@@ -13,10 +13,20 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 
+		$resps = array();
+    //-- Datos de cada renglon.
+    while($row = $result->fetch_assoc()) {
+			$resps[] = $row;
+    }
+		echo json_encode($resps);
+}
+/*if ($result->num_rows > 0) {
+
 	//-- Cabecera de la tabla.
 	echo "  <thead>
 				<tr>
 					<th style='text-align: center; width: 150px;'>
+						Acción
 					</th>
 					<th style='text-align: center; width: 400px;'>
 						Descripción
@@ -77,5 +87,5 @@ if ($result->num_rows > 0) {
     			Sin datos que mostrar.
     		</td>
     	  </tr>";
-}
+}*/
 ?>

@@ -1,15 +1,54 @@
+/*-- Campos usados en la pestaña log -----------------------------------------*/
+.log-tablebody {
+
+}
+
 /*-- Campos usados en la pestaña adicional -----------------------------------*/
-.additional-tablehead {
+.additional-tablebody {
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 272px;
 	display: block;
-	width: 800px;
+	width:inherit;
+}
+
+.additional-tables {
+	width: inherit;
+  display: block;
+	margin-top: 10px;
+}
+
+.additional-headtable-cell-2 {
+	width: 24.5%;
+  display: inline-block;
+	padding: 0;
+	text-align: center
+}
+
+.additional-headtable-cell {
+	width: 24%;
+  display: inline-block;
+}
+
+.additional-headtable {
+	display: block;
+	width: inherit;
+}
+
+.additional-panel-body {
+	height: 320px;
+	padding: 0;
+}
+
+.additional-searchInputs {
+	width: 100%;
+	height: 45px;
 }
 
 .additional-fulltable {
-	width: 98%;
 	margin: 20px;
 	font-size: 16px;
-	height: 375px;
-	margin-top: 20px;
+	height: 100%;
 }
 
 /*-- Para el boton de busqueda --*/
@@ -24,73 +63,8 @@
 }
 
 /*-- Para que el parrafo en el footer se mantenga en la misma linea --*/
-#language-lastedit {
+#language-lastedit, #platform-lastedit {
 	display: inline;
-}
-
-/*-- Para el padding de los objetos ------------------------------------------*/
-.nopadding {
-	padding: 0;
-}
-
-.padding10 {
-	padding: 10px;
-}
-
-/*-- Que ocupe todo el alto --------------------------------------------------*/
-.height100 {
-	height: 100%;
-}
-
-.height45px {
-	height: 45px;
-}
-
-/*-- Para quitar los radios de los objetos -----------------------------------*/
-.noradius-right {
-	border-radius: 5px 0 0 5px;
-}
-
-.noradius-left {
-	border-radius: 0 5px 5px 0;
-}
-
-.noradius {
-	border-radius: 0;
-}
-
-/*-- Para el ancho de los objetos --------------------------------------------*/
-.width100 {
-	width: 100%;
-}
-
-.width25 {
-	width: 25%;
-}
-
-.width30 {
-	width: 30%;
-}
-
-.width10 {
-	width: 10%;
-}
-
-.width40 {
-	width: 40%;
-}
-
-.width50 {
-	width: : 50%;
-}
-
-/*-- Margenes en los objetos -------------------------------------------------*/
-.btn-marginright {
-	margin-right: 5px;
-}
-
-.btn-marginbottom {
-	margin-bottom: 5px;
 }
 
 /*-- Botones manx ------------------------------------------------------------*/
@@ -192,7 +166,7 @@ p {
 
 .div-section {
 	width: 100%;
-	height: 100%;
+	height: 470px;
 }
 
 .badge-items {

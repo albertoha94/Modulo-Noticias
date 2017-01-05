@@ -18,7 +18,7 @@
 
 	<!-- JS del programa -->
 	<script type="text/javascript" src="js/apps.js"></script>
-	<script type="text/javascript" src="js/languages.js"></script>
+	<script type="text/javascript" src="js/additional.js"></script>
 	<script type="text/javascript" src="js/news.js"></script>
 
 </head>
@@ -30,6 +30,7 @@
 			require 'conn.php';
 
 			//Dialogos
+			require "forms/platform-add.php";
 			require 'forms/app-add.php';
 			require 'forms/language-add.php';
 			require 'forms/language-remove.php';

@@ -20,7 +20,7 @@
 			<!-- Fin de renglon de busqueda -->
 
 			<!-- Renglon con la tabla -->
-			<div class="row" style="height: 410px;">
+			<div class="row" style="height: 350px;">
 				<div class="col-md-12" style="height: inherit;">
 					<div class="panel panel-default" style="height: inherit;">
 						<div class="panel panel-heading" style="margin-bottom: 0;">

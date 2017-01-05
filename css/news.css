@@ -1,13 +1,23 @@
 /*-- Campos usados en la pestaña log -----------------------------------------*/
 .log-tablebody {
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: 400px;
+	display: block;
+}
 
+.log-cell {
+	width: 33%;
+  display: inline-block;
+	padding: 0;
+	text-align: center
 }
 
 /*-- Campos usados en la pestaña adicional -----------------------------------*/
 .additional-tablebody {
 	overflow-y: auto;
 	overflow-x: hidden;
-	max-height: 272px;
+	max-height: 210px;
 	display: block;
 	width:inherit;
 }
@@ -36,7 +46,7 @@
 }
 
 .additional-panel-body {
-	height: 320px;
+	height: 260px;
 	padding: 0;
 }
 

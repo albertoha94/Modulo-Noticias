@@ -1,14 +1,13 @@
 <?php
 /**
- * Obtiene todos los lenguajes activos dentro de la base de datos.
- * Creado por Albertoha94 el 28/Nov/16.
+ * Obtiene todas las plataformas activas dentro de la base de datos.
+ * Creado por Albertoha94 el 04/Ene/17.
  */
 include '../../conn.php';
 
 //-- Select idioma.
-$sql = "SELECT `id_idioma`, `titulo`, `abreviacion`, `manejable`
-				FROM `idioma`
-				WHERE activo = 1
+$sql = "SELECT `id_plataforma`, `titulo`, `icono`, `manejable`
+				FROM `plataformas`
 				ORDER BY titulo ASC";
 $result = $conn->query($sql);
 

@@ -26,7 +26,8 @@
        loadLogs()
        break
        case "#div-languages":
-       loadLanguagesTable()
+       loadLanguagesTable();
+       loadPlatformsTable();
        break
        default:
        break;
@@ -43,57 +44,85 @@ function loadLogs() {
 	$.ajax( {
 		url: "ws/rows/get_rowlogs.php",
 		success: function (oResult) {
+         //console.log(oResult);
          //-- Limpia la tabla.
          $("#log_table").empty();
          var row = "";
 
-         if(oResult == null){
-            console.log("res_array es null");
+         if(oResult == "") {
+
+            //-- Crea un renglon vacio.
+            //console.log("res_array es null");
             row = "<thead>\
                    </thead>\
                    <tbody>\
-                    <tr>\
-                      <tc>\
+                    <tr style=\"display: block;\">\
+                      <td class=\"log-cell\" style=\"width: 100%;\">\
                         Sin datos que mostrar\
-                      </tc>\
+                      </td>\
                     </tr>\
                    </tbody>";
+            $("#log_table").append(row);
          } else {
+            var res_array = JSON.parse(oResult);
+            console.log("res_array noes null: ", oResult);
+            var head = "\
+            <thead class=\"additional-headtable\" style=\"padding-left: 4px;\">\
+               <tr style=\"display: block;\">\
+                  <th class=\"log-cell\">\
+                     Tipo de acción\
+                  </th>\
+                  <th class=\"log-cell\">\
+                     Descripción\
+                  </th>\
+                  <th class=\"log-cell\">\
+                     Fecha realizada\
+                  </th>\
+               </tr>\
+            </thead>\
+            <tbody id=\"log_tbody\" class=\"log-tablebody\">";
+            $("#log_table").append(head);
 
+            //-- Para cada item.
+            $.each(res_array, function(oIndex, oValue) {
+               //console.log(oValue);
+               var img = "";
+               switch (oValue['type']) {
+
+                  //-- Agregar.
+                  case "0":
+                     img = "res/imgs/add.png";
+                  break;
+
+                  //-- Editar.
+                  case "1":
+                     img = "res/imgs/edit.png";
+                  break;
+
+                  //-- Eliminar
+                  case "2":
+                     img = "res/imgs/delete.png";
+                  break;
+               }
+
+               row = "\
+                 <tr style=\"display: block;\">\
+                   <td class=\"log-cell\">\
+                     <img src=\"" + img + "\" width=\"30px\" height=\"30px\" />\
+                   </td>\
+                   <td class=\"log-cell\">" + oValue['mensaje'] + " \
+                   </td>\
+                   <td class=\"log-cell\">" + oValue['fecha_creacion'] + " \
+                   </td>\
+                 </tr>";
+               $("#log_tbody").append(row);
+            } );
+
+            //-- Cerramos la etiqueta.
+            $("#log_table").append("</tbody>");
          }
-      var res_array = JSON.parse(oResult);
-
-
-        console.log("res_array noes null");
-        /*row = "\
-         <tr style=\"display: block;\">\
-           <td class=\"additional-headtable-cell-2\">\
-             <p>\
-               " + oValue["titulo"] + "\
-             </p>\
-           </td>\
-           <td class=\"additional-headtable-cell-2\">\
-             <p>\
-               " + oValue["abreviacion"] + "\
-             </p>\
-           </td>\
-           <td class=\"additional-headtable-cell\">\
-               <button type='button' class='btn btn-primary' style='width: 100%;' data-toggle='modal'\
-                       data-target='#modal-dialog-language'\
-                       onclick='editLanguage(" + oValue["id_idioma"] + ")' " + dehab + "><b>Editar</b></button>\
-           </td>\
-           <td class=\"additional-headtable-cell\">\
-               <button type='button' class='btn btn-danger' style='width: 100%;' data-toggle='modal'\
-                       data-target='#modal-dialog-language-remove'\
-                       onclick=\"deleteLanguagePrompt(" + oValue["id_idioma"] + ", '" + oValue["titulo"] + "', '" + oValue["abreviacion"] + "')\" " + dehab + ">\
-                       <b>Desactivar</b>\
-               </button>\
-           </td>\
-         </tr>";*/
-      }
-			$("#log_table").append(row);
 		}
-	} )
+	} );
 }
 
 //-- Metodos para los botones de la parte superior.

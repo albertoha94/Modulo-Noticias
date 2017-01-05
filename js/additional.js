@@ -4,6 +4,7 @@
  */
 
 //-- Lenguajes -----------------------------------------------------------------
+
  /**
  * Limpia los campos de la forma de lenguajes.
  */
@@ -310,17 +311,36 @@ function loadPlatformsTable() {
  }
 
  /**
+  *   Lee una imagen y la sube al servidor.
+  */
+ /*function readImage(oInput) {
+    console.log("Comenzando obtencion de imagen...");
+
+    //-- Si tiene un archivo.
+    if (oInput.files && oInput.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#app-platform-iconimg').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#app-platform-iconimg").change( function() {
+    readImage(this);
+});*/
+
+ /**
  * Limpia los campos de la forma de plataforma.
  */
  function newPlatform() {
-
-    // TODO: Actualizar variables de este metodo.
 
    //-- Limpiar los campos.
    $("#app-platform-id").val("");
    $("#app-platform-name").val("");
    $("#app-platform-icontxt").val("");
    $("#alert-error-addplatform").hide();
+   $("#app-platform-iconimg").attr("src", "res/imgs/noicon.png");
 
    //-- Establecer el titulo.
    $("#modal-platform-title").text("Nueva plataforma");
@@ -391,26 +411,24 @@ function loadPlatformsTable() {
  */
  function editPlatform(oId) {
 
-    // TODO: Actualizar su editar para usar campos correctos.
-
    //-- Llamar el proceso.
    $.ajax( {
-     url: "ws/get/get_language.php",
+     url: "ws/get/get_platform.php",
      data: {
-       "LaguageId" : oId
+       "PlatId" : oId
      },
      success: function (oResult) {
        //console.log(oResult);
        var res = JSON.parse(oResult);
 
        //-- Llenar los campos.
-       $("#app-lang-id").val(res["id"]);
-       $("#app-lang-name").val(res["titulo"]);
-       $("#app-lang-abv").val(res["abreviacion"]);
-       $("#alert-error-addlanguage").hide();
+       $("#app-platform-id").val(res["id_plataforma"]);
+       $("#app-platform-name").val(res["titulo"]);
+       $("#app-platform-icontxt").val(res["icono"]);
+       $("#alert-error-addplatform").hide();
 
        //-- Establecer el titulo.
-       $("#modal-language-title").text("Editar lengua: " + res["titulo"]);
+       $("#modal-platform-title").text("Editar plataforma: " + res["titulo"]);
      }
    } );
  }

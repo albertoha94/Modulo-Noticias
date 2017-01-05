@@ -1,62 +1,61 @@
 <div id="form-app">
-
   <div id="form-app-info">
-    <table style="width: 100%;">
-      <tr>
-        <td style="width:40%">
-          <img></img>
-          <input type="button" value="Editar foto"/>
-        </td>
-        <td style="width:50%; font-size:16px;">
-          <p>titulo</p>
-          <p>lenguaje</p>
-          <p>totales ativas</p>
-          <p>globales</p>
-          <p>app</p>
-        </td>
-        <td style="width:10%">
-          <table>
-            <tr>
-              <td>
-                <input class="btn btn-manx" style="width:100%;" type="button" value="Publicar noticias"/>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input class="btn btn-manx" style="width:100%;" type="button" value="Vista previa">
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input class="btn btn-manx" style="width:100%;" type="button" value="Editar"/>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input class="btn btn-danger" style="width:100%; margin:5px; font-size:16px; padding:10px;" type="button" value="Desactivar"/>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+    <div class="row">
 
-    </table>
+      <!-- Icono e imagen -->
+      <div class="col-md-3">
+        <input type="button" value="Editar foto"/>
+      </div>
 
-    <div>
+      <!-- Panel de informacion -->
+      <div class="col-md-6">
+        <table>
+          <tr>
+            <td>
+              <div class="row">
+                <div class="cl-sm-3">
+                  <img id="form-app-info-platform" title="Mi plataforma" alt="icono" width="32px"
+                  height="32px"/>
+                </div>
+                <div class="cl-sm-8">
+                  <p id="form-app-info-title">Titulo de la app</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p id="form-app-info-language">Lenguaje defecto</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p id="form-app-info-totalnews">Total noticias: 5</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="" alt="icono global" width="32px;" height="32px;" />
+            </td>
+            <td>
+              <p id="form-app-info-global-news">2</p> /
+            </td>
+            <td>
+              <p id="form-app-info-local-news">2</p> /
+            </td>
+            <td>
+              <img src="" alt="icono local" width="32px;" height="32px;" id="form-app-info-local-icon" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Acciones -->
+      <div class="col-md-3">
+        <input class="btn btn-manx" style="width:100%;" type="button" value="Publicar noticias"/>
+        <input class="btn btn-manx" style="width:100%;" type="button" value="Editar"/>
+        <input class="btn btn-danger" style="width:100%; margin:5px; font-size:16px; padding:10px;" type="button" value="Desactivar"/>
+      </div>
     </div>
   </div>
-
-  <hr></hr>
-
-  <div id="form-app-table">
-    <table>
-      <thead>
-        <tr>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </div>
-
 </div>

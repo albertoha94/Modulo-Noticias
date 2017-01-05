@@ -9,8 +9,8 @@
  $(document).ready(function () {
    //console.log("document ready Comenzado.");
 
-   //-- Mostramos los logs.
-   //loadLogs()
+   //-- Habilitar los tooltips.
+   $('[data-toggle="tooltip"]').tooltip(); 
 
    //-- Preparamos los clics the las tabs.
    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -65,7 +65,7 @@ function loadLogs() {
             $("#log_table").append(row);
          } else {
             var res_array = JSON.parse(oResult);
-            console.log("res_array noes null: ", oResult);
+            //console.log("res_array noes null: ", oResult);
             var head = "\
             <thead class=\"additional-headtable\" style=\"padding-left: 4px;\">\
                <tr style=\"display: block;\">\

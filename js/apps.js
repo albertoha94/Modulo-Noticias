@@ -1,5 +1,5 @@
 /**
- * Contiene todo lo relacionado con la creación y modificación de las apps.
+ * Contiene todo lo relacionado con la creación y modificación de las apps y noticias.
  * Creada por Albertoha94 el 19/Dic/16.
  */
 

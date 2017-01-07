@@ -96,6 +96,11 @@
      },
      success: function (oResult) {
        console.log(oResult);
+       var answers = JSON.parse(oResult);
+
+       //-- Poniendo la informacion en la ventana.
+       $("#form-app-info-title").text(answers["titulo"]);
+       $("#form-app-info-language").text("Idioma por defecto: " + )
        //$("#apps-list").empty();
        //$("#apps-list").append(oResult)
      }

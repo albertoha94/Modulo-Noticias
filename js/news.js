@@ -10,7 +10,7 @@
    //console.log("document ready Comenzado.");
 
    //-- Habilitar los tooltips.
-   $('[data-toggle="tooltip"]').tooltip(); 
+   $('[data-toggle="tooltip"]').tooltip();
 
    //-- Preparamos los clics the las tabs.
    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -21,6 +21,7 @@
      switch (target) {
        case "#div-apps":
        loadAppsList()
+
        break
        case "#div-log":
        loadLogs()

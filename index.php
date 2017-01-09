@@ -31,6 +31,7 @@
 
 			//Dialogos
 			require "forms/platform-add.php";
+			require "forms/news-add.php";
 			require 'forms/app-add.php';
 			require 'forms/language-add.php';
 			require 'forms/language-remove.php';
@@ -38,14 +39,6 @@
 
 	<!-- Panel de acciones -->
 	<div id="div-actions">
-		<table>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-manx" onclick="nuevaNoticia()">Nueva Noticia</button>
-				</td>
-			</tr>
-		</table>
-
 	</div>
 
 	<div class="panel panel-default div-panel-height" style="height: 88%">

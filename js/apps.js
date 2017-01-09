@@ -99,8 +99,8 @@
        var answers = JSON.parse(oResult);
 
        //-- Poniendo la informacion en la ventana.
-       $("#form-app-info-title").text(answers["titulo"]);
-       $("#form-app-info-language").text("Idioma por defecto: " + )
+       //$("#form-app-info-title").text(answers["titulo"]);
+       //$("#form-app-info-language").text("Idioma por defecto: " + )
        //$("#apps-list").empty();
        //$("#apps-list").append(oResult)
      }
@@ -114,7 +114,7 @@
    $.ajax( {
      url: "ws/rows/get_rowapps.php",
      success: function (oResult) {
-       //console.log(oResult);
+       console.log(oResult);
        $("#apps-list").empty();
        $("#apps-list").append(oResult)
      }

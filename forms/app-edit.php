@@ -62,7 +62,7 @@
       <div class="col-lg-10">
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="app-edit-news-row">
       <table class="table table-striped" id="app-news-table">
       </table>
     </div>

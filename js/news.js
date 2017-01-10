@@ -32,7 +32,6 @@
        break
        default:
        break;
-       alert("Error en pestañas.");
      }
    });
  });

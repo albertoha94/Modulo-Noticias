@@ -88,7 +88,7 @@
  *  Muestra una ventana con todo lo referente a la app.
  */
  function showApp(oAppId) {
-   console.log("App a mostrar: ", oAppId);
+   //console.log("App a mostrar: ", oAppId);
    $.ajax( {
      url: "ws/get/get_app.php",
      data: {
@@ -98,11 +98,10 @@
        console.log(oResult);
        var answers = JSON.parse(oResult);
 
-       //-- Poniendo la informacion en la ventana.
-       //$("#form-app-info-title").text(answers["titulo"]);
-       //$("#form-app-info-language").text("Idioma por defecto: " + )
-       //$("#apps-list").empty();
-       //$("#apps-list").append(oResult)
+       // TODO: FALTA PONER LOS DATOS DE ANSWER EN LA FORMA.
+
+       var defaultLanguage = answers["idioma_default"];
+       createTabs(oAppId, defaultLanguage);
      }
   });
  }
@@ -114,9 +113,96 @@
    $.ajax( {
      url: "ws/rows/get_rowapps.php",
      success: function (oResult) {
-       console.log(oResult);
+       //console.log(oResult);
        $("#apps-list").empty();
        $("#apps-list").append(oResult)
      }
    })
+ }
+
+ /**
+  *   Crea una seccion de pestañas de acuerdo a los lenguajes que se manejan en
+  *   las noticias de la app.
+  */
+  function createTabs(oAppId, oDefaultLanguage) {
+     $.ajax( {
+      url: "ws/get/get_newsLanguagesByApp.php",
+      data: {
+          'appId' : oAppId
+      },
+      success: function (oResult) {
+         //console.log(oResult);
+         var parsed = JSON.parse(oResult);
+         var answers = [];
+         for(var i = 0; i < parsed.length; i++) {
+            if(parsed["id_idioma"] == oDefaultLanguage) {
+               answers.unshift(parsed[i]);
+            } else {
+               answers.push(parsed[i]);
+            }
+         }
+         console.log(answers);
+
+         //-- Creando las pestañas.
+         $("#app-edit-news-row").empty();
+
+         //-- Inicio de la lista.
+         var finalhtml = "";
+         var htmlstart = "<ul class=\"nav nav-tabs nav-justified\" id=\"list_app"
+         + oAppId + "\">";
+         finalhtml += htmlstart;
+
+         var htmltabs = "";
+         var htmltabsdiv = "";
+         //-- Contenido del div.
+         $.each(answers, function (oIndex, oValue) {
+            var htmlactive = "";
+            if(oIndex == 0) {
+               htmlactive = "class=\"active\"";
+            }
+
+            //-- Pestaña
+            htmltabs += "<li " + htmlactive + "><a onclick=\"showNewsFromLanguage(" +
+            oAppId + ", " + oValue["id_idioma"] + ")\" \
+            href=\"#news-language-" + oValue["id_idioma"] + "\" data-toggle=\"tab\">" +
+            oValue["titulo"] + "</a></li>";
+
+            //-- Su contenido
+            htmltabsdiv += "<div id=\"news-language-" + oValue["id_idioma"] + "\" class=\"div-section tab-pane fade\">\
+            Seccion con id: news-language-" + oValue["titulo"] + "-" + oValue["id_idioma"] +
+            "</div>";
+         });
+         finalhtml += htmltabs;
+         //--Cierres
+         finalhtml += "</ul><div id=\"div_apps_languages_tab_content\" class=\"tab-content\">";
+         finalhtml += htmltabsdiv;
+         finalhtml += "</div>"
+
+         //-- Agregar todo al div.
+         $("#app-edit-news-row").append(finalhtml);
+
+         // TODO: FALTA HACER QUE AL CREAR LAS TABS SE MUESTRE EL CONTENIDO DE LA QUE SE TIENE POR DEFECTO.
+      }
+   } );
+  }
+
+/**
+ * Obtiene las noticias que se tengan en una aplicacion en cierto lenguaje.
+ * @param   oLanguage La id del lenguaje que tiene la noticia.
+ * @param   oApp  La id de la app a la  que la noticia pertenece.
+ */
+ function showNewsFromLanguage(oLanguage, oApp) {
+    console.log("Mostrando noticias del lenguaje: " + oLanguage + " con app: " + oApp);
+
+    //-- Comenzamos el ajax.
+    $.ajax( {
+     url: "ws/get/get_newsOfLanguage.php",
+     data: {
+         'id_app' : oApp,
+         'id_lang': oLanguage
+     },
+     success: function (oResult) {
+        console.log(oResult);
+     }
+  } );
  }

@@ -8,16 +8,15 @@ include '../../conn.php';
 $appid = $_GET['appId'];
 
 //-- Select apps.
-$sql = "SET @p0='". $appid ."'; CALL `sp_getApp`(@p0)";
+$sql = "CALL `sp_getApp`(". $appid .")";
 
-$result = $conn->query($sql);
+//-- run the store proc
+$result = mysqli_query($conn, $sql) or die("Query fail: ". $conn->error);
 
-//-- Obtener el resultado.
+//-- Loop the result set
 $resf = array();
-
-//-- Datos de cada renglon.
-while($row = $result->fetch_assoc()) {
-  $resf[] = $row;
+while ($row = mysqli_fetch_array($result)) {
+   $resf[] = $row;
 }
 
 echo json_encode($resf);

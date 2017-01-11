@@ -10,16 +10,17 @@ $idlang = $_GET['id_lang'];
 
 //-- Select apps.
 $sql = "CALL `sp_getNewsOfLanguage`(". $idapp .", ". $idlang .")";
+//echo $sql ."\n";
 
 //-- Corre el procedimiento
 $result = $conn->query($sql) or die("Query fail: ". $conn->error);
 
 //-- Loop the result set
 $resf = array();
-echo $result->num_rows;
+//echo $result->num_rows ."\n";
 if ($result->num_rows > 0) {
    while ($row = mysqli_fetch_array($result)) {
-      print_r($row);
+      //print_r($row);
       $resf[] = $row;
    }
 }

@@ -163,13 +163,17 @@
 
             //-- Pestaña
             htmltabs += "<li " + htmlactive + "><a onclick=\"showNewsFromLanguage(" +
-            oAppId + ", " + oValue["id_idioma"] + ")\" \
+            oValue["id_idioma"] + ", " + oAppId + ")\" \
             href=\"#news-language-" + oValue["id_idioma"] + "\" data-toggle=\"tab\">" +
             oValue["titulo"] + "</a></li>";
 
             //-- Su contenido
-            htmltabsdiv += "<div id=\"news-language-" + oValue["id_idioma"] + "\" class=\"div-section tab-pane fade\">\
+            htmltabsdiv +=
+            "<div id=\"news-language-" + oValue["id_idioma"] + "\" class=\"div-section tab-pane fade\">\
             Seccion con id: news-language-" + oValue["titulo"] + "-" + oValue["id_idioma"] +
+               "<table style=\"max-height: 470px;\" id=\"news_table_" + oValue["id_idioma"] + "_" + oAppId + "\"\
+               class=\"table table-striped\">\
+           	   </table>"
             "</div>";
          });
          finalhtml += htmltabs;
@@ -185,6 +189,9 @@
       }
    } );
   }
+
+
+//-- Noticias ------------------------------------------------------------------
 
 /**
  * Obtiene las noticias que se tengan en una aplicacion en cierto lenguaje.
@@ -203,6 +210,80 @@
      },
      success: function (oResult) {
         console.log(oResult);
+
+        //-- Ids usadas dentro de la tabla.
+        var table_id = "#news_table_" + oLanguage + "_" + oApp;
+        var tbody_id = "#news_table_tbody" + oLanguage + "_" + oApp;
+        var answers = JSON.parse(oResult);
+        var finalhtml = "";
+        if(answers.length > 0) {
+
+           //-- Agregando cabecera.
+           finalhtml +=
+           "<thead>\
+               <tr>\
+                  <th>\
+                     Publicada\
+                  </th>\
+                  <th>\
+                     Global\
+                  </th>\
+                  <th>\
+                     Icono\
+                  </th>\
+                  <th>\
+                     Cabecera\
+                  </th>\
+                  <th>\
+                     Fecha Visible\
+                  </th>\
+                  <th>\
+                  </th>\
+                  <th>\
+                  </th>\
+               </tr>\
+           </thead>\
+           <tbody id=\"" + tbody_id + "\">"
+
+           //-- Cuerpo de la tabla.
+           var bodyhtml = "";
+           $.each(answers, function (oIndex, oValue) {
+             // TODO: Falta editar el modal usado en botones de editar y eliminar.
+             // TODO: Falta asignar metodos correctos en los botones de editar y eliminar.
+             bodyhtml +=
+               "<tr>\
+                  <td>" +
+                     oValue["publicada"] +
+                  "</td>\
+                  <td>" +
+                     oValue["global"] +
+                  "</td>\
+                  <td>" +
+                     oValue["icono"] +
+                  "</td>\
+                  <td>" +
+                     oValue["encabezado"] +
+                  "</td>\
+                  <td>" +
+                     oValue["fecha_visible"] +
+                  "</td>\
+                  <td>\
+                     <button type='button' class='btn btn-primary' style='width: 100%;' data-toggle='modal'\
+                     data-target='#modal-dialog-language'\
+                              onclick='editNew()'><b>Editar</b></button>\
+                  </td>\
+                  <td>\
+                     <button type='button' class='btn btn-danger' style='width: 100%;' data-toggle='modal'\
+                     data-target='#modal-dialog-language'\
+                              onclick='editNew()'><b>Desactivar</b></button>\
+                  </td>\
+                </tr>"
+           });
+           finalhtml += bodyhtml + "</tbody>";
+           $(table_id).append(finalhtml);
+        } else {
+           // TODO: Falta hacer que se muestre una table sin datos.
+        }
      }
   } );
  }
